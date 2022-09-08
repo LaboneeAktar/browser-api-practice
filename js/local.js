@@ -17,17 +17,19 @@ const increaseValue = () => {
 
 // increaseValue();
 
-const getValueFromLS = () => {
-    let saveValue = localStorage.getItem('value');
-    let value = {};
-    if (saveValue) {
-        value = JSON.parse(saveValue);
-    }
-    return value;
-}
+// const getValueFromLS = () => {
+//     let saveValue = localStorage.getItem('value');
+//     let value = {};
+//     if (saveValue) {
+//         value = JSON.parse(saveValue);
+//     }
+//     return value;
+// }
 
 const displayValue = () => {
-    const storedValue = getValueFromLS();
+    let saveValue = localStorage.getItem('value');
+    const storedValue = JSON.parse(saveValue);
+    // const storedValue = getValueFromLS();
     value.innerText = storedValue;
 }
 displayValue();

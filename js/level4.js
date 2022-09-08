@@ -43,6 +43,7 @@ const clearAll = () => {
     localStorage.clear();
 }
 
+/*..........Write only single object. after fill input filed again value is replace.............
 
 const getDetailsFromLS = () => {
     let saveDetails = localStorage.getItem('details');
@@ -64,7 +65,39 @@ const sendAll = () => {
     const nameField = inputFieldValueById('name-field');
     const emailField = inputFieldValueById('email-field');
     const messageField = inputFieldValueById('message-field');
-    saveDetailsToLS('Name', nameField);
-    saveDetailsToLS('email', emailField);
-    saveDetailsToLS('message', messageField);
+    // saveDetailsToLS('Name', nameField);
+    // saveDetailsToLS('email', emailField);
+    // saveDetailsToLS('message', messageField);
+}
+*/
+
+
+//.................. add different different object in an array.................
+const sendAll = () => {
+    const nameField = inputFieldValueById('name-field');
+    const emailField = inputFieldValueById('email-field');
+    const messageField = inputFieldValueById('message-field');
+
+    const details = JSON.parse(localStorage.getItem('Details'));
+    if (!details) {
+        const detailsList = [
+            {
+                name: nameField,
+                email: emailField,
+                message: messageField,
+            },
+        ];
+        localStorage.setItem('Details', JSON.stringify(detailsList));
+    }
+    else {
+        const detailsList = [
+            ...details,
+            {
+                name: nameField,
+                email: emailField,
+                message: messageField,
+            },
+        ];
+        localStorage.setItem('Details', JSON.stringify(detailsList));
+    }
 }
